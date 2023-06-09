@@ -1,0 +1,23 @@
+{
+    "name": "E-Ra helper",
+    "description": "Helper for E-Ra IoT Platform",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["nativeMessaging"],
+    "host_permissions": ["http://localhost:3000/", "https://staging-app.e-ra.io/", "https://app.e-ra.io/"],
+    "content_scripts": [
+        {
+            "matches": ["http://localhost:3000/*", "https://staging-app.e-ra.io/*", "https://app.e-ra.io/*"],
+            "css": ["e-ra-helper.css"],
+            "js": ["e-ra-helper.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "service_worker.js",
+        "type": "module"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "logo.png"
+    }
+  }
