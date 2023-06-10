@@ -26,6 +26,10 @@ jobs:
       - name: make zip file
         run: |
           python .github/scripts/make_linux_zip.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: linux.zip
 
   build-window:
     name: Build window version
@@ -49,3 +53,7 @@ jobs:
       - name: make zip file
         run: |
           python .github/scripts/make_window_zip.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: window
+          path: window.zip
