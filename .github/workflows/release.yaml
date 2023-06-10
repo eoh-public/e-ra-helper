@@ -57,3 +57,19 @@ jobs:
         with:
           name: window
           path: window.zip
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: window
+      - uses: actions/download-artifact@v3
+        with:
+          name: linux
+      - name: list files
+        run: ls -al
+      - name: Release
+        uses: softprops/action-gh-release@v1
