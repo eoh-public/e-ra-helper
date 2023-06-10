@@ -23,16 +23,13 @@ jobs:
         run: poetry run pyinstaller installer/linux_installer.py
       - name: build native messaging host
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
-      - name: make dist folder
+      - name: make dist linux
         run: |
-          mkdir linux
-          mv dist/e-ra-helper/e-ra-helper linux/e-ra-helper
-          mv dist/linux_installer/linux_installer linux/linux_installer
-          mv native-messaging-host/com.eoh.era_helper_desktop.json linux/com.eoh.era_helper_desktop.json
+          python .github/scripts/make_linux_zip.py
       - uses: actions/upload-artifact@v3
         with:
           name: linux
-          path: linux/
+          path: linux.zip
 
   build-window:
     name: Build window version
@@ -53,16 +50,13 @@ jobs:
         run: poetry run pyinstaller installer/window_installer.py
       - name: build native messaging host
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
-      - name: make dist folder
+      - name: make dist window
         run: |
-          mkdir window
-          mv dist/e-ra-helper/e-ra-helper.exe window/e-ra-helper.exe
-          mv dist/window_installer/window_installer.exe window/window_installer.exe
-          mv native-messaging-host/com.eoh.era_helper_desktop.json window/com.eoh.era_helper_desktop.json
+          python .github/scripts/make_window_zip.py
       - uses: actions/upload-artifact@v3
         with:
           name: window
-          path: window/
+          path: window.zip
 
   release:
     name: Release
