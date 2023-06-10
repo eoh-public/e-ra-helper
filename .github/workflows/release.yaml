@@ -43,7 +43,7 @@ jobs:
           pip install poetry
           poetry install
       - name: build installer
-        run: poetry run pyinstaller installer/linux_installer.py
+        run: poetry run pyinstaller installer/window_installer.py
       - name: build native messaging host
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
       - name: make zip file
