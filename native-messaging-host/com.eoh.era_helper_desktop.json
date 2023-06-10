@@ -3,5 +3,5 @@
   "description": "E-Ra Desktop Helper",
   "path": "/home/bang/eoh/e-ra-helper/desktop-app/dist/e-ra-helper/e-ra-helper",
   "type": "stdio",
-  "allowed_origins": ["chrome-extension://ohggkfiniipmeambikdkgehmalplihjf/"]
+  "allowed_origins": ["chrome-extension://ppihjimjhbokffindbgmmopjfcmhhelh/"]
 }

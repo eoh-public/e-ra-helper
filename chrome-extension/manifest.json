@@ -16,8 +16,14 @@
         "service_worker": "service_worker.js",
         "type": "module"
     },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhpSZnstKsb6v4kTyZtTWwePXYsY1VG5Fwyzdv/3thENWJua9L1rhFMwYPreLm6RNhPDznn3v9gQBdG1lbpXwUIil1xU0zl2Vf0FJmex31kV24GQ8bbkgaHGBT7mvhFdl+U4w3dnrI42HDrStiAUI6kL6Dpmy8mPqaMhQfRyOnyengC8W6eNQQ/s+WSxA/A4dv6VHSjLQ/ZntzxYCvUOLEzvAJIIe+OJjHN/YWXTjzvl2KsVjfVu/f7pQw3beJy0AwSqMkJ8J1QzVvMWFfMfKA+gtCnX2lVCw1mldXgicOpSd1YAq0VTyGJW9GNJyVnqmRFPOl3uPFOuKma9Am+ThSwIDAQAB",
+    "icons": {
+        "16": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+    },
     "action": {
       "default_popup": "popup.html",
       "default_icon": "logo.png"
     }
-  }
+}
