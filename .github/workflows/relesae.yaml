@@ -28,7 +28,7 @@ jobs:
           python .github/scripts/make_linux_zip.py
 
   build-window:
-    name: Build linux version
+    name: Build window version
     runs-on: windows-latest
     outputs:
       should-run-coverage: ${{ steps.check-execute.outputs.should_run_coverage }}
