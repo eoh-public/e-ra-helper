@@ -1,4 +1,3 @@
-import os
 from zipfile import ZipFile
 
 with ZipFile('linux.zip', 'w') as zip_object:

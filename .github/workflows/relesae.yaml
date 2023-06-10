@@ -26,3 +26,26 @@ jobs:
       - name: make zip file
         run: |
           python .github/scripts/make_linux_zip.py
+
+  build-window:
+    name: Build linux version
+    runs-on: windows-latest
+    outputs:
+      should-run-coverage: ${{ steps.check-execute.outputs.should_run_coverage }}
+      should-run-increase: ${{ steps.check-execute.outputs.should_run_increase }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: install dependencies
+        run: |
+          pip install poetry
+          poetry install
+      - name: build installer
+        run: poetry run pyinstaller installer/linux_installer.py
+      - name: build native messaging host
+        run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
+      - name: make zip file
+        run: |
+          python .github/scripts/make_linux_zip.py
