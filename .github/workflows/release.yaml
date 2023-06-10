@@ -48,4 +48,4 @@ jobs:
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
       - name: make zip file
         run: |
-          python .github/scripts/make_linux_zip.py
+          python .github/scripts/make_window_zip.py
