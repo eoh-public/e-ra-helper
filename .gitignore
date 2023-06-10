@@ -5,3 +5,4 @@ build/
 chrome-extension/*.zip
 __pycache__
 temp_com.eoh.era_helper_desktop.json
+linux.zip
