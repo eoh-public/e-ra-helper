@@ -3,13 +3,12 @@ import os
 import sys
 import webbrowser
 
+# pyinstaller
 if getattr(sys, 'frozen', False):
-    # If the application is run as a bundle, the PyInstaller bootloader
-    # extends the sys module by a flag frozen=True and sets the app
-    # path into variable _MEIPASS'.
-    current_folder = sys._MEIPASS
+    current_folder = os.path.dirname(os.path.abspath(sys.executable))
 else:
     current_folder = os.path.dirname(os.path.abspath(__file__))
+
 
 desktop_json_path = 'com.eoh.era_helper_desktop.json'
 
