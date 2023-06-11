@@ -20,16 +20,17 @@ jobs:
           pip install poetry
           poetry install
       - name: build installer
-        run: poetry run pyinstaller installer/linux_installer.py
+        run: poetry run pyinstaller installer/linux_installer.py -F
       - name: build native messaging host
-        run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
+        run: poetry run pyinstaller native-messaging-host/e-ra-helper.py -F
       - name: make dist linux
         run: |
           python .github/scripts/make_linux_zip.py
-      - uses: actions/upload-artifact@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: linux
-          path: linux.zip
+          files: |
+            e-ra-helper-linux.zip
 
   build-window:
     name: Build window version
@@ -47,36 +48,14 @@ jobs:
           pip install poetry
           poetry install
       - name: build installer
-        run: poetry run pyinstaller installer/window_installer.py
+        run: poetry run pyinstaller installer/window_installer.py -F
       - name: build native messaging host
-        run: poetry run pyinstaller native-messaging-host/e-ra-helper.py
+        run: poetry run pyinstaller native-messaging-host/e-ra-helper.py -F
       - name: make dist window
         run: |
           python .github/scripts/make_window_zip.py
-      - uses: actions/upload-artifact@v3
-        with:
-          name: window
-          path: window.zip
-
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    needs:
-      - build-linux
-      - build-window
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: window
-      - uses: actions/download-artifact@v3
-        with:
-          name: linux
-      - name: list files
-        run: ls -al
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            window.zip
-            linux.zip
+            e-ra-helper-window.zip
