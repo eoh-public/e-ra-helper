@@ -2,11 +2,11 @@ import json
 import os
 import webbrowser
 
-desktop_json_path = 'native-messaging-host/com.eoh.era_helper_desktop.json'
+desktop_json_path = 'com.eoh.era_helper_desktop.json'
 
 print('register native message host with chrome')
 current_folder = os.path.realpath(os.path.dirname(__file__))
-with open(desktop_json_path, 'r') as f:
+with open(os.path.join(current_folder, desktop_json_path), 'r') as f:
     desktop_json = json.load(f)
 
 desktop_json['path'] = os.path.join(current_folder, 'e-ra-helper.exe')
