@@ -23,12 +23,11 @@ jobs:
       - name: make dist linux
         run: |
           python .github/scripts/make_linux_zip.py
-          mv e-ra-helper-linux.zip e-ra-helper-linux-${{ github.ref_name }}.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            e-ra-helper-linux-${{ github.ref_name }}.zip
+            e-ra-helper-linux.zip
 
   build-window:
     name: Build window version
@@ -52,9 +51,8 @@ jobs:
       - name: make dist window
         run: |
           python .github/scripts/make_window_zip.py
-          mv e-ra-helper-window.zip e-ra-helper-window-${{ github.ref_name }}.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            e-ra-helper-window-${{ github.ref_name }}.zip
+            e-ra-helper-window.zip
