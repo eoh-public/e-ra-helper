@@ -1,11 +1,20 @@
 import json
 import os
+import sys
 import webbrowser
+
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the PyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app
+    # path into variable _MEIPASS'.
+    current_folder = sys._MEIPASS
+else:
+    current_folder = os.path.dirname(os.path.abspath(__file__))
 
 desktop_json_path = 'com.eoh.era_helper_desktop.json'
 
 print('register native message host with chrome')
-current_folder = os.path.realpath(os.path.dirname(__file__))
+
 with open(os.path.join(current_folder, desktop_json_path), 'r') as f:
     desktop_json = json.load(f)
 
