@@ -3,13 +3,28 @@ window.postMessage({
 });
 
 window.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'open_in_vlc_player') {
-        console.log(`Playing in VLC player URI ${event.data.uri}`);
-        chrome.runtime.sendMessage({
-            message: {
-                type: 'open_in_vlc_player',
-                uri: event.data.uri,
-            },
-        });
+    if (!event.data) {
+        return;
+    }
+    switch (event.data.type) {
+        case 'open_in_vlc_player':
+            console.log(`Playing in VLC player URI ${event.data.uri}`);
+            chrome.runtime.sendMessage({
+                message: {
+                    type: 'open_in_vlc_player',
+                    uri: event.data.uri,
+                },
+            });
+            break;
+        case 'ttlock_issue_card_offline':
+            chrome.runtime.sendMessage({
+                message: {
+                    type: 'ttlock_issue_card_offline',
+                    lock: event.data.lock,
+                },
+            });
+            break;
+        default:
+            break;
     }
 })
