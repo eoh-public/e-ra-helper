@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener(
         })
         break;
       case 'ttlock_issue_card_offline':
+        console.log('ttlock_issue_card_offline', request.message.lock);
         chrome.runtime.sendNativeMessage('com.eoh.era_helper_desktop', {
           type: 'ttlock_issue_card_offline',
           mac_address: request.message.lock.mac_address,

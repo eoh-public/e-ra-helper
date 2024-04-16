@@ -17,6 +17,7 @@ window.addEventListener('message', (event) => {
             });
             break;
         case 'ttlock_issue_card_offline':
+            console.log('ttlock_issue_card_offline', event.data);
             chrome.runtime.sendMessage({
                 message: {
                     type: 'ttlock_issue_card_offline',

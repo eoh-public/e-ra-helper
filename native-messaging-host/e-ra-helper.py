@@ -1,6 +1,7 @@
 import json
 import platform
 import subprocess
+from datetime import datetime
 
 import nativemessaging
 
@@ -24,11 +25,21 @@ try:
         nativemessaging.send_message(nativemessaging.encode_message('Start vlc'))
 
     if message['type'] == 'ttlock_issue_card_offline':
-        subprocess.Popen(
-            ['issue_card_via_encoder', message['building_number'], message['floor_number'], message['mac_address']],
+        output = subprocess.check_output(
+            [
+                'C:\\Users\\daotr\\PycharmProjects\\e-ra-helper\\ttlock_encoder\\dist\\ttlock_encoder.exe',
+                'issue_card',
+                str(message['building_number']),
+                str(message['floor_number']),
+                message['mac_address'],
+                str(int(datetime.now().timestamp()) + 60 * 60 * 24 * 30)
+            ],
             shell=True)
+
         with open("log.txt", "a") as f:
-            f.write("Start vlc\n")
+            f.write("Start issuing the card\n")
+            f.write(f"{output}\n")
+
         nativemessaging.send_message(nativemessaging.encode_message('Start issuing the card'))
 except Exception as ex:
     with open("log.txt", "a") as f:

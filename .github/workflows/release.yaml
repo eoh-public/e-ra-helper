@@ -20,6 +20,8 @@ jobs:
         run: poetry run pyinstaller installer/linux_installer.py -F
       - name: build native messaging host
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py -F
+      - name: build ttlock encoder
+        run: poetry run pyinstaller ttlock_encoder/ttlock_encoder.py -F --add-binary CardEncoder;CardEncoder
       - name: make dist linux
         run: |
           python .github/scripts/make_linux_zip.py
@@ -49,6 +51,8 @@ jobs:
         run: poetry run pyinstaller installer/window_installer.py -F
       - name: build native messaging host
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py -F
+      - name: build ttlock encoder
+        run: poetry run pyinstaller ttlock_encoder/ttlock_encoder.py -F --add-binary CardEncoder;CardEncoder
       - name: make dist window
         run: |
           python .github/scripts/make_window_zip.py
