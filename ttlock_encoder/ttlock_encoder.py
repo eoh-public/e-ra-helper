@@ -36,7 +36,7 @@ def issue_card():
     hotel_info = response.json()['hotelInfo']
 
     print('Connect to card encoder')
-    result = card_encoder.CE_ConnectComm(configuration['port_name'].encode(), 1)
+    result = card_encoder.CE_ConnectComm(configuration['port_name'].encode())
     print(result)
 
     print('Init card encoder')
