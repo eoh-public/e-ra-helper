@@ -53,6 +53,10 @@ jobs:
         run: poetry run pyinstaller native-messaging-host/e-ra-helper.py -F
       - name: build ttlock encoder
         run: poetry run pyinstaller ttlock_encoder/ttlock_encoder.py -F --add-binary "ttlock_encoder\CardEncoder;CardEncoder"
+      - name: download ffmpeg
+        run: |
+          Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip" -OutFile "ffmpeg.zip"
+          Expand-Archive -Path "ffmpeg.zip" -DestinationPath "ffmpeg"
       - name: make dist window
         run: |
           python .github/scripts/make_window_zip.py

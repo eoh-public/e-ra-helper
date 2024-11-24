@@ -21,6 +21,9 @@ desktop_json['path'] = os.path.join(current_folder, 'e-ra-helper')
 with open(f'{os.environ["HOME"]}/.config/google-chrome/NativeMessagingHosts/com.eoh.era_helper_desktop.json', 'w') as f:
     json.dump(desktop_json, f, indent=4)
 
+print('install ffmpeg')
+os.system('apt install -y ffmpeg')
+
 print('install chrome extension')
 chrome_extension_url = 'https://chrome.google.com/webstore/detail/e-ra-helper/ppihjimjhbokffindbgmmopjfcmhhelh'
 webbrowser.open(chrome_extension_url)

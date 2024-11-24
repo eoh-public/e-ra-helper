@@ -10,6 +10,32 @@ chrome.runtime.onMessage.addListener(
           console.log('Received ' + response);
         })
         break;
+      case 'rtsp_start_conversion':
+        console.log(`rtsp_start_conversion URI ${request.message.uri}`);
+        chrome.runtime.sendNativeMessage('com.eoh.era_helper_desktop', {
+          type: 'rtsp_start_conversion',
+          uri: request.message.uri,
+          widgetId: request.message.widgetId,
+        }, function (response) {
+          console.log('Received ' + response);
+        })
+        break;
+      case 'start_local_server':
+        console.log(`start_local_server`);
+        chrome.runtime.sendNativeMessage('com.eoh.era_helper_desktop', {
+          type: 'start_local_server',
+        }, function (response) {
+          console.log('Received ' + response);
+        })
+        break;
+      case 'stop_local_server':
+        console.log(`stop_local_server`);
+        chrome.runtime.sendNativeMessage('com.eoh.era_helper_desktop', {
+          type: 'stop_local_server',
+        }, function (response) {
+          console.log('Received ' + response);
+        })
+        break;
       case 'ttlock_issue_card_offline':
         console.log('ttlock_issue_card_offline', request.message.lock);
         chrome.runtime.sendNativeMessage('com.eoh.era_helper_desktop', {
@@ -24,6 +50,6 @@ chrome.runtime.onMessage.addListener(
       default:
         break;
     }
-    sendResponse({type: 'service_worker_recieved'});
+    sendResponse({type: 'service_worker_received'});
   }
 );
